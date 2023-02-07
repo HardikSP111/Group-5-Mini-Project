@@ -20,3 +20,14 @@ def removepunc(request):
 
 def capfirst(request):
     return HttpResponse("Capitalized First")
+
+def newlineremove(request):
+    return HttpResponse("Newlineremove")
+
+
+def spaceremove(request):
+    return HttpResponse("SpaceRemove")
+
+
+def charcount(request):
+    return HttpResponse("Charcount")
