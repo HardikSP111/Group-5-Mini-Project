@@ -3,7 +3,7 @@
 #Code for video #6(codewithharry)
 
 from django.http import HttpResponse
-
+from django.shortcuts import render
 #def index(request) : 
  #   return HttpResponse('''<h1>Om</h1> <a href="https://www.youtube.com/watch?v=AepgWsROO4k&list=PLu0W_9lII9ah7DDtYtflgwMwpT3xmjXY9&index=7"> Django Code With Om</a>''')
 
@@ -13,20 +13,25 @@ from django.http import HttpResponse
 # Code For Video #7 
 
 def index(request):
-    return HttpResponse("Home")
+    return render(request,'index.html')
+   # return HttpResponse("Home")
 
 def removepunc(request):
+    #Get the text
+    djtext = request.GET.get('text', 'default')
+    print(djtext)
+    #Analyze the text
     return HttpResponse("Remove Punc")
 
 def capfirst(request):
     return HttpResponse("Capitalized First")
 
 def newlineremove(request):
-    return HttpResponse("Newlineremove")
+    return HttpResponse("New line remove")
 
 
 def spaceremove(request):
-    return HttpResponse("SpaceRemove")
+    return HttpResponse("Space Remove <a href ='/'>back</a>")
 
 
 def charcount(request):
