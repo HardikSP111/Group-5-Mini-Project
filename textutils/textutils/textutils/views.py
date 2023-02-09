@@ -16,23 +16,27 @@ def index(request):
     return render(request,'index.html')
    # return HttpResponse("Home")
 
-def removepunc(request):
+def analyze(request):
     #Get the text
     djtext = request.GET.get('text', 'default')
+    removepunc = request.GET.get('removepunc', 'off')
+    print(removepunc)
     print(djtext)
+    analyzed = djtext
+    params = {'purpose' : 'Removed punctuation' , 'analyzed text' : 'Analyzed text'}
     #Analyze the text
-    return HttpResponse("Remove Punc")
+    return render(request , 'analyze.html' , 'off')
 
-def capfirst(request):
-    return HttpResponse("Capitalized First")
+# def capfirst(request):
+#     return HttpResponse("Capitalized First")
 
-def newlineremove(request):
-    return HttpResponse("New line remove")
-
-
-def spaceremove(request):
-    return HttpResponse("Space Remove <a href ='/'>back</a>")
+# def newlineremove(request):
+#     return HttpResponse("New line remove")
 
 
-def charcount(request):
-    return HttpResponse("Charcount")
+# def spaceremove(request):
+#     return HttpResponse("Space Remove <a href ='/'>back</a>")
+
+
+# def charcount(request):
+#     return HttpResponse("Charcount")
