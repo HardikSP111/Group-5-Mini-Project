@@ -19,13 +19,26 @@ def index(request):
 def analyze(request):
     #Get the text
     djtext = request.GET.get('text', 'default')
+
+    # Check checkbox values
     removepunc = request.GET.get('removepunc', 'off')
-    print(removepunc)
-    print(djtext)
-    analyzed = djtext
-    params = {'purpose' : 'Removed punctuation' , 'analyzed text' : 'Analyzed text'}
-    #Analyze the text
-    return render(request , 'analyze.html' , 'off')
+    fullcaps = request.GET.get('fullcaps', 'off')
+    newlineremover = request.GET.get('newlineremover', 'off')
+    extraspaceremover = request.GET.get('extraspaceremover', 'off')
+
+    #Check which checkbox is on
+    if removepunc == "on":
+        punctuations = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
+        analyzed = ""
+        for char in djtext:
+            if char not in punctuations:
+                analyzed = analyzed + char
+        params = {'purpose':'Removed Punctuations', 'analyzed_text': analyzed}
+        return render(request, 'analyze.html', params)
+
+    else:
+        return HttpResponse("Error")
+
 
 # def capfirst(request):
 #     return HttpResponse("Capitalized First")
